@@ -13,6 +13,18 @@
 -- 		print(node:parent():type())
 -- 	end
 -- end
+--
+local function word_follows()
+	local curs = vim.fn.expand("<cword>")
+	return { curs }
+end
+local function word_follows_cond()
+	local col = vim.fn.col('.')
+	local line = vim.fn.getline('.')
+	local after = line:sub(col)
+	return after:match("^%w") ~= nil -- true if a word follows
+end
+
 
 
 return {
@@ -53,4 +65,15 @@ Daniel Ruebenacker
 	<>
 	```
 	]], { i(1), i(2) })),
+	s({ trig = '->', snippetType = "autosnippet" }, fmta([[ → ]], {})),
+	s({ trig = '=>', snippetType = "autosnippet" }, fmta([[ ⇒ ]], {})),
+	s({ trig = "`", snippetType = "autosnippet" }, {
+		t("`"),
+		f(function()
+			-- move cursor to end of word, append backtick
+			local keys = vim.api.nvim_replace_termcodes("<Esc>ea`", true, false, true)
+			vim.api.nvim_feedkeys(keys, "n", true)
+			return ""
+		end, {}),
+	}),
 }

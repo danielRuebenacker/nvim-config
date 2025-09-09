@@ -2,7 +2,7 @@
 
 return {
 	s('key', fmta(
-		[[ 
-	vim.keymap.set({ "<>" }, "<>")
-	]], {i(1, "mode"), i(2, "lhs")})),
+		[[
+	vim.keymap.set({ "<>" }, "<>", "<>")
+	]], { i(1, "mode"), i(2, "lhs"), i(3, "rhs") })),
 }

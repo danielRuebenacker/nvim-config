@@ -40,6 +40,11 @@ require("mini.pick").setup()
 require("mason").setup()
 
 -- snippets
+
+-- Correct LuaRocks paths for jsregexp
+package.path = package.path .. ";/home/danjel/.luarocks/share/lua/5.1/?.lua;/home/danjel/.luarocks/share/lua/5.1/?/init.lua"
+package.cpath = package.cpath .. ";/home/danjel/.luarocks/lib64/lua/5.1/?.so;/home/danjel/.luarocks/lib64/lua/5.1/?/core.so"
+
 require("luasnip").setup({ enable_autosnippets = true, updateevents = "TextChanged,TextChangedI", })
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
 local ls = require("luasnip")
