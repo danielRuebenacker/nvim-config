@@ -59,15 +59,15 @@ Daniel Ruebenacker
 <>
 		]], { i(1), i(2) })
 	),
-	s({ trig = 'c\'', snippetType = "autosnippet" }, fmta(
+	s({ trig = 'c\'' }, fmta(
 		[[
 	```<>
 	<>
 	```
 	]], { i(1), i(2) })),
-	s({ trig = '->', snippetType = "autosnippet" }, fmta([[ → ]], {})),
-	s({ trig = '=>', snippetType = "autosnippet" }, fmta([[ ⇒ ]], {})),
-	s({ trig = "`", snippetType = "autosnippet" }, {
+	s({ trig = '->' }, fmta([[ → ]], {})),
+	s({ trig = '=>' }, fmta([[ ⇒ ]], {})),
+	s({ trig = "`" }, {
 		t("`"),
 		f(function()
 			-- move cursor to end of word, append backtick
@@ -76,4 +76,5 @@ Daniel Ruebenacker
 			return ""
 		end, {}),
 	}),
+	s('b', fmta([[ bold(<>)<> ]], { i(1), i(2) })),
 }

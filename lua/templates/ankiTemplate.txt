@@ -1,0 +1,31 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{outlines,bm}
+\usepackage{minted}
+\usepackage{xcolor}
+\definecolor{LightGrey}{gray}{0.9}
+\newminted[codeblock]{Java}{
+  frame=lines,
+  framesep=2mm,
+  bgcolor=LightGrey,
+  linenos=true
+}
+\newcommand{\Rn}{\ensuremath{\mathbb{R}^n\ }}
+\begin{document}
+%%MODELNAME Basic
+%%DECKNAME %s
+%%TAGS
+%Front
+[latex] 
+
+[/latex] 
+%Front
+%Back
+[latex] 
+\begin{outline}
+	\1
+\end{outline}
+[/latex] 
+%Back
+\end{document}

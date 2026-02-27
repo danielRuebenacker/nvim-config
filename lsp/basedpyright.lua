@@ -32,6 +32,11 @@ return {
     '.git',
   },
   settings = {
+	python = {
+		analysis = {
+			typeCheckingMode = "off",
+		}
+	},
     basedpyright = {
       analysis = {
         autoSearchPaths = true,

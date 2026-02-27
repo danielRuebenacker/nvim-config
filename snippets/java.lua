@@ -8,14 +8,20 @@ local function filename_no_ext()
 end
 
 return {
-
 	s('cl', fmta(
 		[[
+		package <>;
+
 		public class <> {
 			<>
-			public static void main(String []args) {
+
+			public <>() {
+				<>
+			}
+			public static void main(String[] args) {
 				<>
 			}
 		}
-	]], { f(filename_no_ext, {}), i(1), i(2) })),
+	]], { i(1), f(filename_no_ext, {}), i(2), f(filename_no_ext, {}), i(3), i(4) })),
+	s('pr', fmta([[ System.out.println(<>); ]], { i(1) })),
 }
