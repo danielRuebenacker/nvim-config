@@ -1,12 +1,20 @@
 return {
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
-  'neovim/nvim-lspconfig',
-  config = function()
-    -- 1. Mason setup
-    require('mason').setup()
-    require('mason-lspconfig').setup({
-      ensure_installed = { "rust_analyzer" },
-    })
-  end,
+  {
+    'williamboman/mason.nvim',
+    config = function()
+      require('mason').setup()
+    end,
+  },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    config = function()
+      require('mason-lspconfig').setup({
+        ensure_installed = { "rust_analyzer" },
+      })
+    end,
+  },
+  {
+    'neovim/nvim-lspconfig',
+    -- optional LSP config here
+  },
 }
