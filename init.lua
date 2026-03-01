@@ -279,9 +279,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
 -- vim.lsp.config({ "lua_ls", "basedpyright", "jdtls", "tinymist", "bashls", "shfmt", "arduino-language-server", "clangd",
 -- 	"nil_ls"} )
 
--- vim.lsp.enable({ "lua_ls", "basedpyright", "jdtls", "tinymist", "bashls", "shfmt", "arduino-language-server", "clangd",
--- 	"nil_ls"
--- })
+vim.lsp.enable({ "lua_ls", "basedpyright", "jdtls", "tinymist", "bashls", "shfmt", "arduino-language-server", "clangd",
+	"nil_ls"
+})
 
 
 -- require("typst-preview").setup({
