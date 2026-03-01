@@ -17,7 +17,7 @@ local map = vim.keymap.set
 map('n', '<leader>o', ':update<CR> :source<CR>')
 map('n', '<leader>w', ':w<CR>')
 map('n', '<leader>q', ':q<CR>')
-map('n', '<leader>lf', vim.lsp.buf.format)
+-- map('n', '<leader>lf', vim.lsp.buf.format)
 map('n', '<leader>c', ':e ~/.config/nvim/init.lua<CR>')
 map('n', '<leader>m', ':make<CR>')
 map('n', '<leader>x', ':bd<CR>')
@@ -52,106 +52,105 @@ end, { desc = "Open terminal or focus existing one" })
 
 require("config.lazy")
 
+
+
 -- Function to get current buffer's filename without extension
-local function get_filename_no_ext()
-    local full_path = vim.api.nvim_buf_get_name(0) -- Get full path of current buffer
-    local filename = vim.fn.fnamemodify(full_path, ":t") -- Extract just the file name
-    local name_no_ext = filename:match("(.+)%..+$") or filename -- Remove extension
-    return name_no_ext
-end
+-- local function get_filename_no_ext()
+--     local full_path = vim.api.nvim_buf_get_name(0) -- Get full path of current buffer
+--     local filename = vim.fn.fnamemodify(full_path, ":t") -- Extract just the file name
+--     local name_no_ext = filename:match("(.+)%..+$") or filename -- Remove extension
+--     return name_no_ext
+-- end
 
 -- for anki notes
-map({ "n" }, "<leader>ab",
-	function()
-	local name_no_ext = get_filename_no_ext()
-	require("templates.templates").apply_template("~/.config/nvim/lua/templates/ankiTemplate.txt", name_no_ext) end)
-
--- map({ "n" }, "<leader>ab", ":Anki Basic<CR>")
-map({ "n" }, "<leader>as", ":AnkiSend<CR>")
-
-
-
-vim.pack.add({
-	{ src = "https://github.com/vague2k/vague.nvim" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
-	{ src = "https://github.com/echasnovski/mini.pick" },
-	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
-	{ src = "https://github.com/L3MON4D3/LuaSnip" },
-	{ src = "https://github.com/lervag/vimtex" },
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
-	{ src = "https://github.com/nvim-lua/plenary.nvim" },
-	{ src = "https://github.com/aznhe21/actions-preview.nvim" },
-	-- { src = "https://github.com/mfussenegger/nvim-jdtls" },
-	{ src = "https://github.com/iamcco/markdown-preview.nvim" },
-	{ src = "https://github.com/rareitems/anki.nvim" },
-	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
-	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
-	{ src = "https://github.com/tree-sitter-grammars/tree-sitter-markdown" },
-	{ src = "https://github.com/latex-lsp/tree-sitter-latex" },
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
-	{ src = "https://github.com/nvim-java/nvim-java" },
-	{ src = "https://github.com/JavaHello/spring-boot.nvim" },
-	{ src = "https://github.com/MunifTanjim/nui.nvim" },
-	{ src = "https://github.com/mfussenegger/nvim-dap" },
-	{ src = "https://github.com/m4xshen/autoclose.nvim" },
-	{ src = "https://github.com/preservim/nerdtree" },
-	{ src = "https://github.com/kawre/leetcode.nvim" },
-
-	
-})
--- Not on NixOS
--- { src = "https://github.com/mason-org/mason.nvim" },
+-- map({ "n" }, "<leader>ab",
+-- 	function()
+-- 	local name_no_ext = get_filename_no_ext()
+-- 	require("templates.templates").apply_template("~/.config/nvim/lua/templates/ankiTemplate.txt", name_no_ext) end)
 --
-require('leetcode').setup()
+-- -- map({ "n" }, "<leader>ab", ":Anki Basic<CR>")
+-- map({ "n" }, "<leader>as", ":AnkiSend<CR>")
+
+
+
+-- vim.pack.add({
+-- 	{ src = "https://github.com/vague2k/vague.nvim" },
+-- 	{ src = "https://github.com/stevearc/oil.nvim" },
+-- 	{ src = "https://github.com/echasnovski/mini.pick" },
+-- 	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
+-- 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
+-- 	{ src = "https://github.com/lervag/vimtex" },
+-- 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+-- 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
+-- 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
+-- 	{ src = "https://github.com/aznhe21/actions-preview.nvim" },
+-- 	-- { src = "https://github.com/mfussenegger/nvim-jdtls" },
+-- 	{ src = "https://github.com/iamcco/markdown-preview.nvim" },
+-- 	{ src = "https://github.com/rareitems/anki.nvim" },
+-- 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
+-- 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
+-- 	{ src = "https://github.com/tree-sitter-grammars/tree-sitter-markdown" },
+-- 	{ src = "https://github.com/latex-lsp/tree-sitter-latex" },
+-- 	{ src = "https://github.com/neovim/nvim-lspconfig" },
+-- 	{ src = "https://github.com/nvim-java/nvim-java" },
+-- 	{ src = "https://github.com/JavaHello/spring-boot.nvim" },
+-- 	{ src = "https://github.com/MunifTanjim/nui.nvim" },
+-- 	{ src = "https://github.com/mfussenegger/nvim-dap" },
+-- 	{ src = "https://github.com/m4xshen/autoclose.nvim" },
+-- 	{ src = "https://github.com/preservim/nerdtree" },
+-- 	{ src = "https://github.com/kawre/leetcode.nvim" },
 --
-require('java').setup()
-
-require("autoclose").setup()
-
-require "telescope".setup({
-	defaults = {
-		color_devicons = true,
-		sorting_strategy = "ascending",
-		borderchars = { "", "", "", "", "", "", "", "" },
-		path_displays = "smart",
-		layout_strategy = "horizontal",
-		layout_config = {
-			height = 100,
-			width = 400,
-			prompt_position = "top",
-			preview_cutoff = 40,
-		}
-	}
-})
-
-require("anki").setup({
-	tex_support = true,
-	move_cursor_after_creation = true,
-	models = {
-		-- Here you specify which notetype should be associated with which deck
-		-- NoteType = "NOSE",
-		-- ["Basic"] = { "NOSE", "2P" },
-		["Basic2P"] = "2P",
-		["BasicNOSE"] = "NOSE",
-		-- ["NoteType"] = "NoteType",
-		-- ["Super Basic"] = "Deck::ChildDeck",
-	},
-	-- linters = require("anki.linters").default_linters();
-})
-
-require("actions-preview").setup {
-	backend = { "telescope" },
-	extensions = { "env" },
-	telescope = vim.tbl_extend(
-		"force",
-		require("telescope.themes").get_dropdown(), {}
-	)
-}
-
-require('render-markdown').setup({
-  latex = { enabled = false },
-})
+--
+-- })
+-- require('leetcode').setup()
+-- --
+-- require('java').setup()
+--
+-- require("autoclose").setup()
+--
+-- require "telescope".setup({
+-- 	defaults = {
+-- 		color_devicons = true,
+-- 		sorting_strategy = "ascending",
+-- 		borderchars = { "", "", "", "", "", "", "", "" },
+-- 		path_displays = "smart",
+-- 		layout_strategy = "horizontal",
+-- 		layout_config = {
+-- 			height = 100,
+-- 			width = 400,
+-- 			prompt_position = "top",
+-- 			preview_cutoff = 40,
+-- 		}
+-- 	}
+-- })
+--
+-- require("anki").setup({
+-- 	tex_support = true,
+-- 	move_cursor_after_creation = true,
+-- 	models = {
+-- 		-- Here you specify which notetype should be associated with which deck
+-- 		-- NoteType = "NOSE",
+-- 		-- ["Basic"] = { "NOSE", "2P" },
+-- 		["Basic2P"] = "2P",
+-- 		["BasicNOSE"] = "NOSE",
+-- 		-- ["NoteType"] = "NoteType",
+-- 		-- ["Super Basic"] = "Deck::ChildDeck",
+-- 	},
+-- 	-- linters = require("anki.linters").default_linters();
+-- })
+--
+-- require("actions-preview").setup {
+-- 	backend = { "telescope" },
+-- 	extensions = { "env" },
+-- 	telescope = vim.tbl_extend(
+-- 		"force",
+-- 		require("telescope.themes").get_dropdown(), {}
+-- 	)
+-- }
+--
+-- require('render-markdown').setup({
+--   latex = { enabled = false },
+-- })
 
 
 
@@ -230,9 +229,9 @@ map({ "n" }, "<leader>fm", builtin.man_pages, { desc = "Telescope man pages" })
 
 
 
-require("oil").setup()
-
--- snippets
+-- require("oil").setup()
+--
+-- -- snippets
 require("luasnip").setup({ enable_autosnippets = true, updateevents = "TextChanged,TextChangedI", })
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
 local ls = require("luasnip")
@@ -251,30 +250,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 vim.cmd("set completeopt+=noselect")
-
--- vim.keymap.set('n', '<leader>ff', ":Pick files tool='rg'<CR>")
--- vim.keymap.set('n', '<leader>fh', ":Pick help<CR>")
--- vim.keymap.set('n', '<leader>fb', ":Pick buffers<CR>")
 vim.keymap.set('n', '<leader>e', ":Oil<CR>")
 
 
--- For Java
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "java",
-	callback = function()
-		local cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ":t") -- get last part of cwd
-		local bin = "../bin"
-
-		if cwd == "src" and vim.fn.isdirectory(bin) == 1 then
-			-- we're inside "src" and ../bin exists
-			vim.opt_local.makeprg = "javac -d " .. bin .. " % && java -cp " .. bin .. " %:t:r"
-		else
-			-- fallback
-			vim.opt_local.makeprg = "javac % && java %:t:r"
-
-		end
-	end,
-})
 
 vim.api.nvim_create_autocmd({ 'WinResized', 'VimEnter' }, {
 	callback = function()
@@ -301,53 +279,20 @@ vim.api.nvim_create_autocmd("TermOpen", {
 -- vim.lsp.config({ "lua_ls", "basedpyright", "jdtls", "tinymist", "bashls", "shfmt", "arduino-language-server", "clangd",
 -- 	"nil_ls"} )
 
-vim.lsp.enable({ "lua_ls", "basedpyright", "jdtls", "tinymist", "bashls", "shfmt", "arduino-language-server", "clangd",
-	"nil_ls"
-})
+-- vim.lsp.enable({ "lua_ls", "basedpyright", "jdtls", "tinymist", "bashls", "shfmt", "arduino-language-server", "clangd",
+-- 	"nil_ls"
+-- })
 
 
-require("typst-preview").setup({
-	port = 4000,
-	debug = true,
-	open_cmd = 'brave %s',
-	dependencies_bin = {
-		['tinymist'] = "/home/danjel/.local/share/nvim/typst-preview/tinymist",
-		['websocat'] = "/home/danjel/.local/share/nvim/typst-preview/websocat",
-	},
-})
-
-
--- Try to create command to indent things uniformly on the right (OCD)
--- OCD: align text by a symbol with a fixed width
--- Usage: :OCD <width> <symbol> in visual mode
-vim.api.nvim_create_user_command("OCD", function(opts)
-	local width = tonumber(opts.fargs[1])
-	local symbol = opts.fargs[2]
-
-	if not width or not symbol then
-		print("Usage: :OCD <width> <symbol>")
-		return
-	end
-
-	-- Get visual selection or range
-	local start_line = vim.fn.line("'<")
-	local end_line = vim.fn.line("'>")
-
-	for line_num = start_line, end_line do
-		local line = vim.fn.getline(line_num)
-
-		-- Escape magic characters in the symbol for Lua pattern
-		local sym_escaped = symbol:gsub("([^%w])", "%%%1")
-
-		-- Split line at first occurrence of symbol
-		local before, after = line:match("^(.-)%s*" .. sym_escaped .. "(.*)$")
-		if before and after then
-			-- Pad the first part to the desired width
-			local new_line = string.format("%-" .. width .. "s%s%s", before, symbol, after)
-			vim.fn.setline(line_num, new_line)
-		end
-	end
-end, { range = true, nargs = "+" })
+-- require("typst-preview").setup({
+-- 	port = 4000,
+-- 	debug = true,
+-- 	open_cmd = 'brave %s',
+-- 	dependencies_bin = {
+-- 		['tinymist'] = "/home/danjel/.local/share/nvim/typst-preview/tinymist",
+-- 		['websocat'] = "/home/danjel/.local/share/nvim/typst-preview/websocat",
+-- 	},
+-- })
 
 
 vim.cmd("colorscheme vague")
