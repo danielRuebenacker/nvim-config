@@ -50,7 +50,7 @@ vim.keymap.set("n", "<leader>t", function()
   vim.cmd("term")
 end, { desc = "Open terminal or focus existing one" })
 
-
+require("config.lazy")
 
 -- Function to get current buffer's filename without extension
 local function get_filename_no_ext()

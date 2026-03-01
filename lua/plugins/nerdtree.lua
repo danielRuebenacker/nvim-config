@@ -1,0 +1,6 @@
+return {
+	{
+		'preservim/nerdtree',
+		opts = {},
+	},
+}
