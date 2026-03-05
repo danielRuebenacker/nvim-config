@@ -16,5 +16,8 @@ return {
   {
     'neovim/nvim-lspconfig',
     -- optional LSP config here
+	vim.lsp.config("clangd", {
+		  cmd = { "clangd", "--compile-commands-dir=." }
+	})
   },
 }

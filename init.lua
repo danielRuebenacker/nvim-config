@@ -11,6 +11,7 @@ vim.o.signcolumn = "yes"
 vim.o.winborder = "rounded"
 vim.o.termguicolors = true
 vim.o.ignorecase = true
+vim.o.cursorline = true
 ---------------------------------------------------------------------
 
 
@@ -152,6 +153,5 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
 vim.lsp.enable({ "lua_ls", "basedpyright", "jdtls", "tinymist", "bashls", "shfmt", "arduino-language-server", "clangd", "nil_ls" })
 
-
-vim.cmd("colorscheme vague")
+vim.cmd.colorscheme("neopywal")
 vim.cmd(":hi statusline guibg=NONE")
