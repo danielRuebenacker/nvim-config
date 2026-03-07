@@ -151,7 +151,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
 -------------------------------------------------- LSPs ------------------------------------------------------------------
 
-vim.lsp.enable({ "lua_ls", "basedpyright", "jdtls", "tinymist", "bashls", "shfmt", "arduino-language-server", "clangd", "nil_ls" })
+vim.lsp.enable({ "lua_ls", "basedpyright", "jdtls", "tinymist", "bashls", "shfmt", "arduino-language-server", "clangd", "nil_ls", "bashls", "cssls", "djls", })
 
 vim.cmd.colorscheme("neopywal")
 vim.cmd(":hi statusline guibg=NONE")
