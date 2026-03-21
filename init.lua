@@ -127,12 +127,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.cmd("set completeopt+=noselect")
 -----------------------------------------------------------------------------------------------------------------------------------
 
--- when splitscreen want to limit text width
-vim.api.nvim_create_autocmd({ 'WinResized', 'VimEnter' }, {
-	callback = function()
-		local width = vim.fn.winwidth(0)
-		vim.o.textwidth = width - 15
-	end,
+vim.api.nvim_create_autocmd({ 'WinEnter', 'VimEnter', 'WinResized', 'BufWinEnter' }, {
+  callback = function()
+    local bufname = vim.api.nvim_buf_get_name(0)
+    -- skip NerdTree (messes stuff up)
+    if bufname:match("NERD_tree") then return end
+
+    local width = vim.fn.winwidth(0)
+    vim.bo.textwidth = width - 15  -- use window-local setting
+  end,
 })
 
 -- spell check for notes
@@ -150,8 +153,26 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -------------------------------------------------- LSPs ------------------------------------------------------------------
+require("plugins.lsp")
 
-vim.lsp.enable({ "lua_ls", "basedpyright", "jdtls", "tinymist", "bashls", "shfmt", "arduino-language-server", "clangd", "nil_ls", "bashls", "cssls", "djls", })
+vim.lsp.config("clangd", {
+  cmd = { "clangd", "--compile-commands-dir=." },
+})
+
+vim.lsp.config("basedpyright", {
+  settings = {
+    basedpyright = {
+	  analysis = {
+	  	  typeCheckingMode = "standard",
+	  	  reportMissingTypeStubs = false,       -- stop complaining about missing .pyi stubs
+	  	  reportUnknownVariableType = false,    -- ignore untyped variables
+	  	  reportUnknownMemberType = false,      -- ignore untyped class members
+	  },
+    },
+  },
+})
+
+vim.lsp.enable({ "lua_ls", "basedpyright", "jdtls", "tinymist", "shfmt", "arduino-language-server", "clangd", "nil_ls", "bashls", "cssls", "djls", })
 
 vim.cmd.colorscheme("neopywal")
 vim.cmd(":hi statusline guibg=NONE")
