@@ -172,7 +172,8 @@ vim.lsp.config("basedpyright", {
   },
 })
 
-vim.lsp.enable({ "lua_ls", "basedpyright", "jdtls", "tinymist", "shfmt", "arduino-language-server", "clangd", "nil_ls", "bashls", "cssls", "djls", })
+vim.lsp.enable({ "lua_ls", "basedpyright", "jdtls", "tinymist", "shfmt", "arduino-language-server", "clangd", "nil_ls",
+	"bashls", "cssls", "djls", "biome", })
 
 vim.cmd.colorscheme("neopywal")
 vim.cmd(":hi statusline guibg=NONE")
