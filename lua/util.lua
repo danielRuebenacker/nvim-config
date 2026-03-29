@@ -9,18 +9,18 @@ function util.get_filename_no_ext()
     return name_no_ext
 end
 
--- to dump the contents of a table
 function util.dump(o)
-	if type(o) == 'table' then
-		local s = '{ '
-		for k, v in pairs(o) do
-			if type(k) ~= 'number' then k = '"' .. k .. '"' end
-			s = s .. '[' .. k .. '] = ' .. dump(v) .. ','
-		end
-		return s .. '} '
-	else
-		return tostring(o)
-	end
+    if type(o) == 'table' then
+        local s = '{ '
+        for k, v in pairs(o) do
+            if type(k) ~= 'number' then k = '"' .. k .. '"' end
+            -- CHANGE 'dump(v)' TO 'util.dump(v)' BELOW
+            s = s .. '[' .. k .. '] = ' .. util.dump(v) .. ',' 
+        end
+        return s .. '} '
+    else
+        return tostring(o)
+    end
 end
 
 
@@ -54,5 +54,21 @@ function util.telescopeFinder(finder_fn, dir, hidden, exclude)
 	return function() finder_fn(modified_table) end
 end
 
+function util.get_or_create_terminal_buf()
+  -- Look for an existing terminal buffer
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) then
+      local bt = vim.bo[buf].buftype
+      if bt == "terminal" then
+        -- Open the terminal buffer in the current window
+        vim.api.nvim_set_current_buf(buf)
+        return
+      end
+    end
+  end
+
+  -- If no terminal buffer exists, open a new one
+  vim.cmd("term")
+end
 
 return util

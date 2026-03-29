@@ -14,6 +14,11 @@ vim.o.ignorecase = true
 vim.o.cursorline = true
 ---------------------------------------------------------------------
 
+-- lazy
+require("config.lazy")
+
+-- some utility functions
+local util = require "util"
 
 ------------------------------------------ Keymaps -------------------------------------------------
 local map = vim.keymap.set
@@ -37,29 +42,12 @@ map({ "t" }, "", "<C-\\><C-n>")
 map({ "n" }, "<leader>y", "\"+y")
 
 vim.keymap.set("n", "<leader>t", function()
-  -- Look for an existing terminal buffer
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_loaded(buf) then
-      local bt = vim.bo[buf].buftype
-      if bt == "terminal" then
-        -- Open the terminal buffer in the current window
-        vim.api.nvim_set_current_buf(buf)
-        return
-      end
-    end
-  end
-
-  -- If no terminal buffer exists, open a new one
-  vim.cmd("term")
+	util.get_or_create_terminal_buf()
 end, { desc = "Open terminal or focus existing one" })
 
 ----------------------------------------------------------------------------------------------------
 
--- lazy
-require("config.lazy")
 
--- some utility functions
-local util = require "util"
 
 
 
