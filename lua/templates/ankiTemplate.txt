@@ -1,7 +1,0 @@
-%%MODELNAME Basic
-%%DECKNAME %s
-%%TAGS
-%Front
-%Front
-%Back
-%Back

@@ -56,11 +56,12 @@ end, { desc = "Open terminal or focus existing one" })
 -- for anki notes
 map({ "n" }, "<leader>ab",
 	function()
-	local name_no_ext = util.get_filename_no_ext()
-	require("templates.templates").apply_template("~/.config/nvim/lua/templates/ankiTemplate.txt", name_no_ext) end)
+		local name_no_ext = util.get_filename_no_ext()
+		vim.cmd("AnkiSend")
+		vim.cmd("Anki Basic" .. name_no_ext)
+	end)
 
--- map({ "n" }, "<leader>ab", ":Anki Basic<CR>")
-map({ "n" }, "<leader>as", ":AnkiSend<CR>")
+vim.keymap.set({ "n" }, "<leader>ae", ":AnkiEdit ")
 -----------------------------------------------------------------------------------------------------
 
 
