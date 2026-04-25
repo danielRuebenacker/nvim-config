@@ -10,6 +10,8 @@ return {
 			-- Here you specify which notetype should be associated with which deck
 			["BasicADS"] = "ADS",
 			["MDCloze"] = "ADS",
+			["BasicOOSE"] = "OOSE",
+			["Basic2D"] = "2D"
 			-- ["Super Basic"] = "Deck::ChildDeck",
 		},
 	},

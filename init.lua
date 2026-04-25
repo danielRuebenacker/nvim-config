@@ -54,11 +54,12 @@ end, { desc = "Open terminal or focus existing one" })
 --------------------------------------- Anki Studying ----------------------------------------------
 
 -- for anki notes
-map({ "n" }, "<leader>ab",
+map({ "n" }, "<leader>as",
 	function()
 		local name_no_ext = util.get_filename_no_ext()
 		vim.cmd("AnkiSend")
 		vim.cmd("Anki Basic" .. name_no_ext)
+		vim.cmd("AnkiUnlock")
 	end)
 
 vim.keymap.set({ "n" }, "<leader>ae", ":AnkiEdit ")
